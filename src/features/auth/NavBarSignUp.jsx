@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-function LoginNavBar() {
+function NavBarSignUp() {
   const { t } = useTranslation();
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
@@ -13,7 +13,6 @@ function LoginNavBar() {
             style={{ width: "75px", height: "75px" }}
           />
         </a>
-
         <div className="d-flex justify-content-center" id="navbarNavAltMarkup">
           <button className="m-3">
             <Link
@@ -25,10 +24,10 @@ function LoginNavBar() {
           </button>
           <button className="m-3">
             <Link
-              to={"/signup"}
+              to={"/login"}
               style={{ textDecoration: "none", color: "black" }}
             >
-              {t("navbar.signup")}
+              {t("navbar.login")}
             </Link>
           </button>
         </div>
@@ -37,4 +36,4 @@ function LoginNavBar() {
   );
 }
 
-export default LoginNavBar;
+export default NavBarSignUp;

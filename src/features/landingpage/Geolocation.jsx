@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "../components/Spinner.css";
-
-// const API_KEY = import.meta.env.VITE_API_KEY;
+import "./Spinner.css";
 
 function Geolocation({ setCoordinates }) {
   const navigate = useNavigate();
@@ -77,7 +75,7 @@ function Geolocation({ setCoordinates }) {
     <div className="spinner">
       {isLoading ? (
         <div className="spinner-inner">
-          {/* <img src="/giphy.gif" alt="Loading" height="500" width="500" /> */}
+          <img src="/giphy.gif" alt="Loading" height="500" width="500" />
         </div>
       ) : (
         <h1>Loading...</h1>

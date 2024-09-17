@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Footer from "./Footer";
+import Footer from "../../components/Footer";
 import LoginNavBar from "./LoginNavBar";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import Scroll from "../components/Scroll";
+import { useState } from "react";
+import Scroll from "../../components/Scroll";
 
 const LoginPage = ({ setUser, setToken }) => {
   const API = import.meta.env.VITE_BASE_URL;
@@ -12,20 +12,16 @@ const LoginPage = ({ setUser, setToken }) => {
 
   const { t, i18n } = useTranslation();
 
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
-
   const [login, setLogin] = useState({
     email: "",
-    password_hash: "",
+    password_hash: ""
   });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setLogin((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: value
     }));
   };
 
@@ -48,7 +44,7 @@ const LoginPage = ({ setUser, setToken }) => {
           setToken(token);
           setLogin(() => ({
             email: "",
-            password_hash: "",
+            password_hash: ""
           }));
           navigate("/favorite");
         } else {
@@ -67,7 +63,6 @@ const LoginPage = ({ setUser, setToken }) => {
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div
-                  //   className="card bg-dark text-white"
                   className="card bg-white text-black"
                   style={{ borderRadius: "1rem" }}
                 >

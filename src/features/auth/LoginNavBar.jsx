@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-function NavBarSignUp() {
+function LoginNavBar() {
   const { t } = useTranslation();
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
@@ -25,10 +25,10 @@ function NavBarSignUp() {
           </button>
           <button className="m-3">
             <Link
-              to={"/login"}
+              to={"/signup"}
               style={{ textDecoration: "none", color: "black" }}
             >
-              {t("navbar.login")}
+              {t("navbar.signup")}
             </Link>
           </button>
         </div>
@@ -37,4 +37,4 @@ function NavBarSignUp() {
   );
 }
 
-export default NavBarSignUp;
+export default LoginNavBar;

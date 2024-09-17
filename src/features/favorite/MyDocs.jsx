@@ -1,25 +1,20 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { BiSolidPrinter } from "react-icons/bi";
 import { RiFileDownloadFill } from "react-icons/ri";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-import { LiaStarSolid } from "react-icons/lia";
-import { FaFolderPlus } from "react-icons/fa";
-import Scroll from "./Scroll";
-import Footer from "../pages/Footer";
+import Scroll from "../../components/Scroll";
+import Footer from "../../components/Footer";
 
 const API = import.meta.env.VITE_BASE_URL;
 
-function MyDocs({ user, token }) {
+function MyDocs({ user }) {
   const { t } = useTranslation();
   const [userFav, setUserFav] = useState([]);
   console.log(userFav);
   const API = import.meta.env.VITE_BASE_URL;
-  //     let {id}=useParams();
-  // let navigate = useNavigate();
 
   useEffect(() => {
     fetchUserFav();
@@ -28,7 +23,6 @@ function MyDocs({ user, token }) {
   async function fetchUserFav() {
     try {
       let result = await axios.get(`${API}/users-favorites/${user.user_id}`);
-      //console.log(result.data);
       setUserFav(result.data);
     } catch (error) {
       console.log(error);
@@ -36,7 +30,6 @@ function MyDocs({ user, token }) {
   }
 
   async function deleteUserFav(userId, favoriteId) {
-    // console.log("test123")
     try {
       const confirmDeleteBox = window.confirm(
         `🚨 WAIT!!!!! Are you sure you want to delete? 🚨`
@@ -47,7 +40,6 @@ function MyDocs({ user, token }) {
       let result = await axios.delete(
         `${API}/users-favorites/${userId}/${favoriteId}`
       );
-      console.log(result);
       setUserFav(userFav.filter((item) => item.favorite_id !== favoriteId));
       navigate("/favorite/mydocs");
     } catch (error) {

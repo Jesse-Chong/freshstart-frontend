@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import Scroll from "../components/Scroll";
+import Scroll from "../../components/Scroll";
 import { useNavigate } from "react-router-dom";
 
 const boroughCoordinates = {
@@ -19,6 +19,7 @@ function LandingPage({ setLanguageSelected, setCoordinates }) {
     setLanguageSelected(true);
     navigate("/geolocation");
   }
+  
   const handleBoroughClick = (borough) => {
     const geolocationAllowed = localStorage.getItem('geolocationAllowed') === 'true'
     if (geolocationAllowed) {
@@ -239,7 +240,6 @@ function LandingPage({ setLanguageSelected, setCoordinates }) {
                   <iframe
                     className="shadow-1-strong rounded"
                     src="https://www.youtube.com/embed/Q_XRlBqh0EU?si=UXhJSUMRxWXwrba_"
-                    //https://youtu.be/Q_XRlBqh0EU?si=UXhJSUMRxWXwrba_
                     title="YouTube video"
                     allowFullScreen
                   ></iframe>

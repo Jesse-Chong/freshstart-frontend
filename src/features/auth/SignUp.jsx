@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Footer from "./Footer";
-import NavBarSignUp from "../pages/NavBarSignUp";
+import Footer from "../../components/Footer";
+import NavBarSignUp from "./NavBarSignUp";
 import { useNavigate } from "react-router-dom";
-import Scroll from "../components/Scroll";
+import Scroll from "../../components/Scroll";
 
 const SignUpPage = ({ setUser, setToken }) => {
   const navigate = useNavigate();
@@ -14,14 +14,14 @@ const SignUpPage = ({ setUser, setToken }) => {
     first_name: "Manny",
     last_name: "Gonzalez",
     email: "mannygonzalez1@pursuit.org",
-    password_hash: "",
+    password_hash: ""
   });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setSignUp((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: value
     }));
   };
 
@@ -38,13 +38,13 @@ const SignUpPage = ({ setUser, setToken }) => {
       .then((res) => {
         if (res.user.user_id) {
           setUser(res.user);
-          localStorage.setItem('token', res.token);
+          localStorage.setItem("token", res.token);
           setToken(res.token);
           setSignUp((prev) => ({
             first_name: "",
             last_name: "",
             email: "",
-            password_hash: "",
+            password_hash: ""
           }));
           navigate("/favorite");
         } else {
@@ -52,9 +52,6 @@ const SignUpPage = ({ setUser, setToken }) => {
         }
       })
       .catch((err) => console.log(err));
-  };
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
   };
 
   return (
@@ -66,7 +63,6 @@ const SignUpPage = ({ setUser, setToken }) => {
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div
-                  //   className="card bg-dark text-white"
                   className="card bg-white text-black"
                   style={{ borderRadius: "1rem" }}
                 >
@@ -75,7 +71,6 @@ const SignUpPage = ({ setUser, setToken }) => {
                       <h2 className="fw-bold mb-4 text-uppercase">
                         {t("navbar.signup")}
                       </h2>
-
                       <div className="form-outline form-white mb-4">
                         <input
                           type="text"
@@ -88,7 +83,6 @@ const SignUpPage = ({ setUser, setToken }) => {
                           required
                         />
                       </div>
-
                       <div className="form-outline form-white mb-4">
                         <input
                           type="text"
@@ -101,7 +95,6 @@ const SignUpPage = ({ setUser, setToken }) => {
                           required
                         />
                       </div>
-
                       <div className="form-outline form-white mb-4">
                         <input
                           type="email"
@@ -114,7 +107,6 @@ const SignUpPage = ({ setUser, setToken }) => {
                           required
                         />
                       </div>
-
                       <div className="form-outline form-white mb-4">
                         <input
                           type="password"
@@ -127,7 +119,6 @@ const SignUpPage = ({ setUser, setToken }) => {
                           required
                         />
                       </div>
-
                       <button
                         className="btn-lg px-5"
                         type="submit"
@@ -136,7 +127,6 @@ const SignUpPage = ({ setUser, setToken }) => {
                         {t("navbar.signup")}
                       </button>
                     </div>
-
                     <div>
                       <p className="mb-0">
                         {t("signup.account")}{" "}
