@@ -12,6 +12,7 @@ import FavNavBar from "./features/favorite/FavNavBar";
 import Geolocation from "./features/landingpage/Geolocation";
 import Favorite from "./features/favorite/Favorite";
 import MyDocs from "./features/favorite/MyDocs";
+import { MapProvider } from "./features/context/MapContext";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -35,6 +36,7 @@ function App() {
   }, [coordinates]);
 
   return (
+    <MapProvider>
     <Router>
       <FavNavBar user={user} setUser={setUser} setToken={setToken} />
       <Routes>
@@ -93,6 +95,7 @@ function App() {
         />
       </Routes>
     </Router>
+    </MapProvider>
   );
 }
 

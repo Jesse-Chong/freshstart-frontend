@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 import Scroll from "../../components/Scroll";
+import Leaflet from "../../components/leafletMaps/Leaflet";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const url = import.meta.env.VITE_BASE_URL;
@@ -20,7 +21,6 @@ function JobsPage({ coordinates }) {
   const [origin, setOrigin] = useState(null);
   const [showDirectionsButton, setShowDirectionsButton] = useState(false);
   const { t } = useTranslation();
-
 
   if (coordinates === null) {
     return (
@@ -47,7 +47,9 @@ function JobsPage({ coordinates }) {
           {t("jobs.job_agencies")}
         </button>
         <div className="row">
-          <div className="col-md-6 mt-3"></div>
+          <div className="col-md-6 mt-3">
+            <Leaflet />
+          </div>
           <div className="col-md-6">
             {places.slice(0, visible).map((item) => {
               return (
@@ -90,7 +92,7 @@ function JobsPage({ coordinates }) {
       <Footer />
       <div
         className="offcanvas offcanvas-bottom"
-        tabindex="-1"
+        tabIndex="-1"
         id="offcanvasBottom"
         aria-labelledby="offcanvasBottomLabel"
       >
