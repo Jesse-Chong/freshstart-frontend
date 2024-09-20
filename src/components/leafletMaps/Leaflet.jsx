@@ -7,7 +7,7 @@ import RouteOptions from "../routing/routeOptions";
 import RouteInstructions from "../routing/routeInstructions";
 import PlaceSearch from "../placeSearch/PlaceSearch";
 import PolylineRouting from "../routing/PolyLineRouting";
-const Leaflet = () => {
+const Leaflet = ({ coordinates }) => {
   const {
     searchResults,
     setSearchResults,
@@ -24,7 +24,7 @@ const Leaflet = () => {
     <div style={{ display: "flex", height: "100vh", width: "100%" }}>
       <div style={{ flex: "1", maxWidth: "70%", position: "relative" }}>
         <MapContainer
-          center={[40.743, -73.9419]}
+          center={coordinates}
           zoom={13}
           scrollWheelZoom={false}
           style={{ height: "100%", width: "100%" }}
@@ -34,7 +34,7 @@ const Leaflet = () => {
             attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
           />
           {/* Static Marker for initial location */}
-          <Marker position={[40.743, -73.9419]} />
+          <Marker position={coordinates} />
           
           {/* Search control to trigger nearby job agency search */}
           <PlaceSearch setSearchResults={setSearchResults} />
